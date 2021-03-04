@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>CGPA Calculator</title>
+</head>
+
+<body class="container">
+    <header>
+        <h1> CGPA Calculator</h1>
+    </header>
+    <main>
+        <section id="input_area">
+            <div class="allButton mb-3 d-flex justify-content-around">
+                <button id="calculate" class="btn btn-success ">Calculate</button>
+                <button id="addRow" class="btn btn-primary">Add Row</button>
+                <button id="removeRow" class="btn btn-danger">Remove Row</button>
+                <button id="reset" class="btn btn-warning">Reset</button>
+            </div>
+
+            <table id="table">
+
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Credit</th>
+                        <th>Grade</th>
+                    </tr>
+                </thead>
+
+                <tbody id="newRowCreated">
+                    <tr>
+                        <td>01</td>
+                        <td><input class="credit" type="text" onfocus="bgChange(this)" onblur="bgRemove(this)"></td>
+                        <td><input class="grade" type="text" onfocus="bgChange(this)" onblur="bgRemove(this)"></td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+        </section>
+
+        <section id="result_area">
+            <div id="total_area">
+                <h4>Total Credit: <span id="totalCredit">0</span></h4>
+                <h5>Total Grade: <span id="totalGrade">0</span></h5>
+                <p>
+                    <small>Weighted Grade: </small>
+                    <small>
+                        <span id="weightedGrade">0</span>
+                    </small>
+                </p>
+                <h4>CGPA: <span id="cgpa">0</span></h4>
+            </div>
+            <div id="textCenter">
+                <div id="letter_grade_area">
+                    <h1 id="gradeLatter">?</h1>
+                </div>
+                <small>
+                    <span id="remark"></span>
+                </small>
+            </div>
+
+        </section>
+    </main>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
