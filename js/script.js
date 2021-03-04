@@ -173,6 +173,7 @@ removeRow.addEventListener('click', () => {
     }
     creditArray = [];
     gradeArray = [];
+    addRow.disabled = false;
 });
 
 
@@ -228,7 +229,13 @@ function addNewRow() {
     } else {
         cell0.innerText = count;
     }
+    
+    if( count == 15){
+        alert(`You can't add more then ${count} rows...`)
+        addRow.disabled = true;
+    }
     count++;
+
 
     // Add newly created Elements into the New cells:
     cell1.appendChild(credit);
