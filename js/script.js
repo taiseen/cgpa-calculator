@@ -32,6 +32,10 @@ let count = 2;
 let creditArray = []
 let gradeArray = []
 
+function clearValuesFromArray(){
+    creditArray = [];
+    gradeArray = [];
+}
 
 // 1 =====================================================
 calculate.addEventListener('click', () => {
@@ -43,6 +47,12 @@ calculate.addEventListener('click', () => {
     let inputTags = inputs.length
 
     for (let i = 0; i < inputTags; i++) {
+
+        if(inputs[i].value == 0 ){
+            alert(`Please give corresponding values in appropriated fields...`)
+            clearValuesFromArray()
+            break;
+        }
 
         let userInput = parseFloat(inputs[i].value)
 
@@ -87,66 +97,45 @@ function gradingCalculation(total) {
     if (4 == total) {
         showGradeLatter.innerText = 'A+';
         showRemark.innerText = 'Outstanding';
-        console.log("A+");
-        console.log("Outstanding");
     }
     else if (4 > total && total >= 3.75) {
         showGradeLatter.innerText = 'A'
         showRemark.innerText = 'Excellent';
-        console.log("A");
-        console.log("Excellent");
     }
     else if (3.75 > total && total >= 3.50) {
         showGradeLatter.innerText = 'A-'
         showRemark.innerText = 'Very Good';
-        console.log("A-");
-        console.log("Very Good");
     }
     else if (3.50 > total && total >= 3.25) {
         showGradeLatter.innerText = 'B+'
         showRemark.innerText = 'Good';
-        console.log("B+");
-        console.log("Good");
     }
     else if (3.25 > total && total >= 3) {
         showGradeLatter.innerText = 'B'
         showRemark.innerText = 'Satisfactory';
-        console.log("B");
-        console.log("Satisfactory");
     }
     else if (3 > total && total >= 2.75) {
         showGradeLatter.innerText = 'B-'
         showRemark.innerText = 'Above Average';
-        console.log("B-");
-        console.log("Above Average");
     }
     else if (2.75 > total && total >= 2.5) {
         showGradeLatter.innerText = 'C+'
         showRemark.innerText = 'Average';
-        console.log("C+");
-        console.log("Average");
     }
     else if (2.5 > total && total >= 2.25) {
         showGradeLatter.innerText = 'C'
         showRemark.innerText = 'Below Average';
-        console.log("C");
-        console.log("Below Average");
     }
     else if (2.25 > total && total >= 2) {
         showGradeLatter.innerText = 'D'
         showRemark.innerText = 'Pass';
-        console.log("D");
-        console.log("Pass");
     }
     else if (2 > total && total >= 0) {
         showGradeLatter.innerText = 'F'
         showRemark.innerText = 'Fail';
-        console.log("F");
-        console.log("Fail");
     } else {
         showGradeLatter.innerText = ".!."
         showRemark.innerText = 'out of range...';
-        console.log("Not a valid range");
     }
 }
 
@@ -154,8 +143,7 @@ function gradingCalculation(total) {
 // 2 =====================================================
 addRow.addEventListener('click', (event) => {
     addNewRow();
-    creditArray = [];
-    gradeArray = [];
+    clearValuesFromArray();
 });
 
 
@@ -171,9 +159,9 @@ removeRow.addEventListener('click', () => {
     } else {
         alert("You can't delete any more...")
     }
-    creditArray = [];
-    gradeArray = [];
+
     addRow.disabled = false;
+    clearValuesFromArray();
 });
 
 
@@ -192,8 +180,7 @@ reset.addEventListener('click', () => {
     showRemark.innerText = ''
     showGradeLatter.innerText = '?'
 
-    creditArray = [];
-    gradeArray = [];
+    clearValuesFromArray();
 });
 
 
@@ -240,7 +227,7 @@ function addNewRow() {
     // Add newly created Elements into the New cells:
     cell1.appendChild(credit);
     cell2.appendChild(grade);
-
+    
 }
 
 
