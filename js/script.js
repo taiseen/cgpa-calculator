@@ -32,7 +32,7 @@ let count = 2;
 let creditArray = []
 let gradeArray = []
 
-function clearValuesFromArray(){
+function clearValuesFromArray() {
     creditArray = [];
     gradeArray = [];
 }
@@ -48,25 +48,56 @@ calculate.addEventListener('click', () => {
 
     for (let i = 0; i < inputTags; i++) {
 
-        if(inputs[i].value == 0 ){
+        // checking for empty values...
+        if (inputs[i].value == 0) {
             alert(`Please give corresponding values in appropriated fields...`)
-            clearValuesFromArray()
+            clearValuesFromArray();
             break;
         }
 
         let userInput = parseFloat(inputs[i].value)
 
-        if (i % 2 == 0) {
-            creditArray.push(userInput)
+        // checking for input formate...
+        if (isNaN(userInput)) {
+            alert(`Your input value is not number.`);
+            inputs[i].value = ''
+            inputs[i+1].value = ''
+            break; 
         } else {
-            gradeArray.push(userInput)
+
+            if (i % 2 == 0) {
+                creditArray.push(userInput)
+            } else {
+                gradeArray.push(userInput)
+            }
+
         }
+
+        // if (inputs[i].value != 0) {
+        //     alert(`You have old values...`)
+        //     break;
+        // } else {
+
+        // }
+
+        // console.log(creditArray);
+        // console.log(gradeArray);
+        setValues(totalCredit, totalGrade, cgpa);
+        gradingCalculation(cgpa);
     }
 
-    totalCredit = creditArray.reduce((sum, total) => sum + total)
+
+    
+
+
+});
+
+function setValues(totalCredit, totalGrade, cgpa) {
+
+    totalCredit = creditArray.reduce((sum, total) => sum + total,0)
     showTotalCredit.innerText = totalCredit;
 
-    totalGrade = gradeArray.reduce((sum, total) => sum + total)
+    totalGrade = gradeArray.reduce((sum, total) => sum + total,0)
     showTotalGrade.innerText = totalGrade.toFixed(2);
 
     //averageGrade = gradeArray.reduce((a, b) => (a + b)) / gradeArray.length;
@@ -75,17 +106,14 @@ calculate.addEventListener('click', () => {
     cgpa = cgpaCalculation() / totalCredit;
 
     showCGPA.innerText = cgpa.toFixed(2);
-
-    gradingCalculation(cgpa);
-
-});
+}
 
 
 function cgpaCalculation() {
 
     let multiplicationArray = creditArray.map((multiply, idx) => multiply * gradeArray[idx])
 
-    let weightAvgGPA = multiplicationArray.reduce((sum, total) => sum + total);
+    let weightAvgGPA = multiplicationArray.reduce((sum, total) => sum + total,0);
     showWeightedGrade.innerText = weightAvgGPA.toFixed(2);
 
     return weightAvgGPA;
@@ -216,8 +244,8 @@ function addNewRow() {
     } else {
         cell0.innerText = count;
     }
-    
-    if( count == 15){
+
+    if (count == 15) {
         alert(`You can't add more then ${count} rows...`)
         addRow.disabled = true;
     }
@@ -227,7 +255,7 @@ function addNewRow() {
     // Add newly created Elements into the New cells:
     cell1.appendChild(credit);
     cell2.appendChild(grade);
-    
+
 }
 
 
