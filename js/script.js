@@ -33,9 +33,13 @@ let creditArray = []
 let gradeArray = []
 
 function clearValuesFromArray() {
-    creditArray = [];
-    gradeArray = [];
+    creditArray = []
+    gradeArray = []
 }
+
+function calculateBtnEnable () {
+    calculate.disabled = false;
+} 
 
 // 1 =====================================================
 calculate.addEventListener('click', () => {
@@ -61,8 +65,8 @@ calculate.addEventListener('click', () => {
         if (isNaN(userInput)) {
             alert(`Your input value is not number.`);
             inputs[i].value = ''
-            inputs[i+1].value = ''
-            break; 
+            inputs[i + 1].value = ''
+            break;
         } else {
 
             if (i % 2 == 0) {
@@ -72,24 +76,26 @@ calculate.addEventListener('click', () => {
             }
 
         }
-        
+
         setValues(totalCredit, totalGrade, cgpa);
         gradingCalculation(cgpa);
+        calculate.disabled = true;
     }
 
-    if (creditArray.indexOf(i)) {
-        alert(`You have old values...`)
+    // if (creditArray.indexOf(i)) {
+    //     alert(`You have old values...`)
+    // }
 
-    }
+    
 
 });
 
 function setValues(totalCredit, totalGrade, cgpa) {
 
-    totalCredit = creditArray.reduce((sum, total) => sum + total,0)
+    totalCredit = creditArray.reduce((sum, total) => sum + total, 0)
     showTotalCredit.innerText = totalCredit;
 
-    totalGrade = gradeArray.reduce((sum, total) => sum + total,0)
+    totalGrade = gradeArray.reduce((sum, total) => sum + total, 0)
     showTotalGrade.innerText = totalGrade.toFixed(2);
 
     //averageGrade = gradeArray.reduce((a, b) => (a + b)) / gradeArray.length;
@@ -105,7 +111,7 @@ function cgpaCalculation() {
 
     let multiplicationArray = creditArray.map((multiply, idx) => multiply * gradeArray[idx])
 
-    let weightAvgGPA = multiplicationArray.reduce((sum, total) => sum + total,0);
+    let weightAvgGPA = multiplicationArray.reduce((sum, total) => sum + total, 0);
     showWeightedGrade.innerText = weightAvgGPA.toFixed(2);
 
     return weightAvgGPA;
@@ -164,6 +170,7 @@ function gradingCalculation(total) {
 addRow.addEventListener('click', (event) => {
     addNewRow();
     clearValuesFromArray();
+    calculateBtnEnable();
 });
 
 
@@ -182,25 +189,30 @@ removeRow.addEventListener('click', () => {
 
     addRow.disabled = false;
     clearValuesFromArray();
+    calculateBtnEnable();
 });
 
 
 // 4 =====================================================
 reset.addEventListener('click', () => {
 
-    let inputTags = inputs.length
-    for (let i = 0; i < inputTags; i++) {
-        inputs[i].value = "";
+    if (confirm("Are you sure to clear all values... ?")) {
+        let inputTags = inputs.length
+        for (let i = 0; i < inputTags; i++) {
+            inputs[i].value = "";
+        }
+
+        showTotalCredit.innerText = '0'
+        showTotalGrade.innerText = '0'
+        showWeightedGrade.innerText = '0'
+        showCGPA.innerText = '0'
+        showRemark.innerText = ''
+        showGradeLatter.innerText = '?'
+
+        clearValuesFromArray();
+        calculateBtnEnable();
     }
 
-    showTotalCredit.innerText = '0'
-    showTotalGrade.innerText = '0'
-    showWeightedGrade.innerText = '0'
-    showCGPA.innerText = '0'
-    showRemark.innerText = ''
-    showGradeLatter.innerText = '?'
-
-    clearValuesFromArray();
 });
 
 
@@ -255,7 +267,7 @@ function addNewRow() {
 rowRetyping.addEventListener('keyup', (event) => {
 
     clearValuesFromArray();
-
+    calculateBtnEnable();
     //console.log(event.target.className);
     //console.log(inputGrades[1].className);
 
