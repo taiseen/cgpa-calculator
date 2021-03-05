@@ -78,7 +78,6 @@ calculate.addEventListener('click', () => {
         }
 
         setValues(totalCredit, totalGrade, cgpa);
-        gradingCalculation(cgpa);
         calculate.disabled = true;
     }
 
@@ -104,6 +103,8 @@ function setValues(totalCredit, totalGrade, cgpa) {
     cgpa = cgpaCalculation() / totalCredit;
 
     showCGPA.innerText = cgpa.toFixed(2);
+
+    gradingCalculation(cgpa);
 }
 
 
@@ -118,11 +119,16 @@ function cgpaCalculation() {
 }
 
 
-function gradingCalculation(total) {
+function gradingCalculation(cgpa) {
+    
+    const total = cgpa.toFixed(2)
 
     if (4 == total) {
         showGradeLatter.innerText = 'A+';
+        showGradeLatter.style.color = "green";
+
         showRemark.innerText = 'Outstanding';
+        showRemark.style.color = "red";
     }
     else if (4 > total && total >= 3.75) {
         showGradeLatter.innerText = 'A'
