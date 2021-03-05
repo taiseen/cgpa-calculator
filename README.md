@@ -1,1 +1,3 @@
-# cgpa-calculator
+# Demo Look...
+
+<img src="img/demo_look.png">
