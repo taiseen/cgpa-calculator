@@ -25,7 +25,7 @@ const showRemark = document.getElementById('remark');
 
 // Find a <table> element with id="table":
 const table = document.getElementById('table');
-const newRowCreated = document.getElementById('newRowCreated');
+const rowRetyping = document.getElementById('newRowCreated');
 
 let count = 2;
 
@@ -72,23 +72,15 @@ calculate.addEventListener('click', () => {
             }
 
         }
-
-        // if (inputs[i].value != 0) {
-        //     alert(`You have old values...`)
-        //     break;
-        // } else {
-
-        // }
-
-        // console.log(creditArray);
-        // console.log(gradeArray);
+        
         setValues(totalCredit, totalGrade, cgpa);
         gradingCalculation(cgpa);
     }
 
+    if (creditArray.indexOf(i)) {
+        alert(`You have old values...`)
 
-    
-
+    }
 
 });
 
@@ -260,8 +252,9 @@ function addNewRow() {
 
 
 // =====================================================
-newRowCreated.addEventListener('keyup', (event) => {
+rowRetyping.addEventListener('keyup', (event) => {
 
+    clearValuesFromArray();
 
     //console.log(event.target.className);
     //console.log(inputGrades[1].className);
