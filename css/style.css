@@ -15,7 +15,7 @@ main {
     gap            : 10px;
 }
 
-@media (max-width:920px) {
+@media (max-width:895px) {
     main {
         justify-content: center;
     }
@@ -83,5 +83,5 @@ input[type=text] {
 }
 
 .allButton {
-    width: 450px;
+    min-width: 400px;
 }
