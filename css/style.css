@@ -1,8 +1,28 @@
+header {
+    margin-top: 20px;
+    text-align: center;
+}
+
 main {
-    border  : 1px dotted black;
-    width   : 950px;
-    padding : 10px;
-    overflow: auto;
+    border         : 1px dotted black;
+    max-width      : 930px;
+    padding        : 10px;
+    margin         : 10px auto;
+    overflow       : auto;
+    display        : flex;
+    flex-wrap      : wrap;
+    justify-content: space-evenly;
+    gap            : 10px;
+}
+
+@media (max-width:920px) {
+    main {
+        justify-content: center;
+    }
+
+    #box2 {
+        order: -1;
+    }
 }
 
 table {
@@ -21,18 +41,18 @@ input[type=text] {
 }
 
 #input_area {
-    width  : 500px;
-    border : 1px dashed red;
-    padding: 20px;
-    float  : left;
+    min-width: 480px;
+    border   : 1px dashed red;
+    padding  : 20px;
+    float    : left;
 }
 
 #result_area {
-    width  : 400px;
-    border : 1px dashed black;
-    float  : right;
-    margin : auto;
-    padding: 20px 0 20px 18px;
+    min-width: 380px;
+    border   : 1px dashed black;
+    float    : right;
+    margin   : auto;
+    padding  : 20px 0 20px 18px;
 }
 
 #total_area {
@@ -43,10 +63,11 @@ input[type=text] {
 }
 
 #letter_grade_area {
-    width     : 40%;
-    text-align: center;
-    display   : inline-block;
-    border    : 1px dotted black;
+    width        : 40%;
+    text-align   : center;
+    display      : inline-block;
+    border       : 1px dotted black;
+    /* outline   : 1px solid tomato; */
 }
 
 #gradeLatter {

@@ -4,12 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" type="image/png" href="./img/favicon.ico" />
     <title>CGPA Calculator</title>
 </head>
 
-<body class="container">
+<body>
     <header>
         <h1> CGPA Calculator</h1>
     </header>
@@ -44,30 +45,34 @@
 
         </section>
 
-        <section id="result_area">
-            <div id="total_area">
-                <h4>Total Credit: <span id="totalCredit">0</span></h4>
-                <h5>Total Grade: <span id="totalGrade">0</span></h5>
-                <p>
-                    <small>Weighted Grade: </small>
-                    <small>
-                        <span id="weightedGrade">0</span>
-                    </small>
-                </p>
-                <h4>CGPA: <span id="cgpa">0</span></h4>
-            </div>
-            <div id="textCenter">
-                <div id="letter_grade_area">
-                    <h1 id="gradeLatter">?</h1>
-                </div>
-                <small>
-                    <span id="remark"></span>
-                </small>
-            </div>
 
+        <section id="box2">
+            <div id="result_area">
+                <div id="total_area">
+                    <h4>Total Credit: <span id="totalCredit">0</span></h4>
+                    <h5>Total Grade: <span id="totalGrade">0</span></h5>
+                    <p>
+                        <small>Weighted Grade: </small>
+                        <small>
+                            <span id="weightedGrade">0</span>
+                        </small>
+                    </p>
+                    <h4>CGPA: <span id="cgpa">0</span></h4>
+                </div>
+                <div id="textCenter">
+                    <div id="letter_grade_area">
+                        <h1 id="gradeLatter">?</h1>
+                    </div>
+                    <small>
+                        <span id="remark"></span>
+                    </small>
+                </div>
+            </div>
         </section>
+
     </main>
     <script src="js/script.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 
 </html>
